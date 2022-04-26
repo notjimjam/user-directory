@@ -1,0 +1,13 @@
+.card {
+    display:flex;
+    flex-direction: column;
+    background-color: white;
+    max-width: 500px;
+    padding:30px 50px;
+    margin-top: 50px;
+    justify-self: center;
+}
+
+.card-titles {
+    font-weight: bold;
+}
