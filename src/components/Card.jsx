@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './Card.css'
+import '../styles/Card.css'
 import data from '../data'
 import Form from './Form'
 
@@ -26,33 +26,35 @@ function Card(props) {
     // console.log(user)
 
   return (
-    <div className='card'>
+    <div id='card'>
         {/* <Form /> */}
-        <div>
-            <h1>{index + 1}/{users.length}</h1>
-            <h2 className='card-name'>{user.name.first} {user.name.last}</h2>
+        <div id='card-main'>
+            <div>
+                <h1 className='card-count'>{index + 1}/{users.length}</h1>
+                <h2 className='card-name'>{user.name.first} {user.name.last}</h2>
+            </div>
+            <div className='details'>
+                <p><span className='card-titles'>From:</span> {user.city}, {user.country}</p>
+                <p><span className='card-titles'>Job Title:</span> {user.title}</p>
+                <p><span className='card-titles'>Employer:</span> {user.employer}</p>
+            </div>
+            <div className='movies'>
+                <p className='card-titles'>Favorite Movies:</p>
+                <p className='movie'>1. {user.favoriteMovies[0]}</p>
+                <p className='movie'>2. {user.favoriteMovies[1]}</p>
+                <p className='movie'>3. {user.favoriteMovies[2]}</p>
+                
+            </div>
         </div>
 
-        <br />
-        <div>
-            <p><span className='card-titles'>From:</span> {user.city}, {user.country}</p>
-            <p><span className='card-titles'>Job Title:</span> {user.title}</p>
-            <p><span className='card-titles'>Employer:</span> {user.employer}</p>
-        </div>
-        <div>
-            <p className='card-titles'>Favorite Movies:</p>
-            <p className='movies'>1. {user.favoriteMovies[0]}</p>
-            <p className='movies'>2. {user.favoriteMovies[1]}</p>
-            <p className='movies'>3. {user.favoriteMovies[2]}</p>
-            
-        </div>
-
-        <div className='btn-house'>
-            <button className='btn-index' onClick={prev}>{'<'} Previous</button>
-            <button className='btn-editors'>Edit</button>
-            <button className='btn-editors' onClick={deleteHandler}>Delete</button>
-            <button className='btn-editors'>New</button>
-            <button className='btn-index' onClick={next}>Next {'>'}</button>
+        <div className='btn-container'>
+            {index === 0 ? <button className=' index-btn hide'></button> : <button className='index-btn' onClick={prev}>{'<'} Previous</button>}
+            <div className='edit-container'>
+                <button className='info-btn'>Edit</button>
+                <button className='info-btn' onClick={deleteHandler}>Delete</button>
+                <button className='info-btn'>New</button>
+            </div>
+            {index === data.length - 1 ? <p className='index-btn hide'></p> : <button className='index-btn' onClick={next}>Next {'>'}</button>}
         </div>
 
     </div>
